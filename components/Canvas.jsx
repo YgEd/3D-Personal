@@ -28,7 +28,7 @@ export default function Canvas_Com() {
       </Canvas>
       <Menu
         onSectionChange={setSection}
-        MenuOpened={menuOpened}
+        menuOpened={menuOpened}
         setMenuOpened={setMenuOpened}
       />
     </>

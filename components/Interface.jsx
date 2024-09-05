@@ -186,7 +186,7 @@ const ContactSection = () => {
   return (
     <Section>
       <h1 className="px-2 text-4xl font-mono mb-4">Contact Me</h1>
-      <div className="p-4 bg-white rounded-3xl w-70 h-3/4 max-w-full opacity-90">
+      <div className="p-4 bg-white rounded-3xl w-70 h-160 max-w-full opacity-90">
         <form className="pt-3 px-3">
           <LabelInput name={"name"} />
           <LabelInput name={"email"} />
