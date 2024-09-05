@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion-3d";
-
+import { useMotionValue } from "framer-motion";
+import { OrbitControls } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 
-export default function Cube() {
+export default function Cube({ section }) {
   const cubeRef = useRef(null);
 
   useFrame((state, delta) => {
@@ -19,18 +20,17 @@ export default function Cube() {
 
   return (
     <motion.mesh
-      //   initial={{ opacity: 0 }}
-      //   whileInView={{
-      //     opacity: 1,
-      //     transition: {
-      //       duration: 1,
-      //       delay: 0.5,
-      //     },
-      //   }}
+      animate={{
+        y: section === 0 ? 0 : 2,
+        // x: section === 0 ? 0 : -1,
+        // z: section === 0 ? 0 : -1,
+        scale: section != 0 ? 0.5 : 1,
+      }}
       ref={cubeRef}
       position={[0, 0, 0]}
     >
-      <boxGeometry args={[1, 1, 1]} />
+      {/* <OrbitControls enablePan={false} enableZoom={false} /> */}
+      <boxGeometry args={[2, 2, 2]} />
       <meshStandardMaterial map={texture_1} />
     </motion.mesh>
   );
