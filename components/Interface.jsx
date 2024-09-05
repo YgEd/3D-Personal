@@ -82,12 +82,46 @@ const SkillsSection = () => {
     },
   ];
 
+  const variants = (delay = 0.5) => {
+    return {
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 1,
+          delay: delay,
+        },
+      },
+    };
+  };
+
+  const initial = { opacity: 0, y: 50 };
+
   return (
     <Section>
-      <h1 className="text-6xl font-mono">Skills</h1>
-      <br />
-      <p className="text-lg text-gray-400">What I bring to the table</p>
-      <motion.div whileInView={"visible"} className="mt-8 space-y-4">
+      <motion.div whileInView={"visible"}>
+        <motion.h1
+          initial={initial}
+          variants={variants()}
+          className="text-6xl font-mono"
+        >
+          Skills
+        </motion.h1>
+        <br />
+        <motion.p
+          initial={initial}
+          variants={variants(0.75)}
+          className="text-lg text-gray-400"
+        >
+          What I bring to the table
+        </motion.p>
+      </motion.div>
+      <motion.div
+        whileInView={"visible"}
+        initial={initial}
+        variants={variants()}
+        className="mt-8 space-y-4"
+      >
         {/* PROGRESS BAR BELOW */}
         {skills.map((skill, index) => (
           <div className="w-64" key={index}>
@@ -98,10 +132,11 @@ const SkillsSection = () => {
                 initial={{ scaleX: 0 }}
                 variants={{
                   visible: {
+                    opacity: 1,
                     scaleX: 1,
                     transition: {
                       duration: 1,
-                      delay: 0.25 + index / 5,
+                      delay: 0.45 + index / 5,
                       type: "spring",
                       stiffness: 125,
                     },
@@ -138,7 +173,7 @@ const LabelInput = ({ name, input = true }) => {
           type="text"
           name={name}
           id={name}
-          className="w-full font-median text-gray-800 mb-4 rounded-sm border-none bg-gray-100 ring-2 ring-gray-500 p-1"
+          className="w-full font-median text-gray-800 mb-7 rounded-sm border-none bg-gray-100 p-1"
         ></input>
       ) : (
         <></>
@@ -151,8 +186,8 @@ const ContactSection = () => {
   return (
     <Section>
       <h1 className="px-2 text-4xl font-mono mb-4">Contact Me</h1>
-      <div className="p-6 bg-white rounded-lg w-70 h-3/4 max-w-full">
-        <form className="px-3">
+      <div className="p-4 bg-white rounded-3xl w-70 h-3/4 max-w-full opacity-90">
+        <form className="pt-3 px-3">
           <LabelInput name={"name"} />
           <LabelInput name={"email"} />
           <LabelInput name={"message"} input={false} />
@@ -160,7 +195,7 @@ const ContactSection = () => {
             maxLength={100}
             name="message"
             id="message"
-            className="w-full h-full font-median text-gray-800 mb-4 rounded-sm border-none bg-gray-100 ring-2 ring-gray-500 p-1 resize-none"
+            className="w-full h-full font-median text-gray-800 mb-4 rounded-sm border-none bg-gray-100 p-1 resize-none"
           />
           <button
             disabled={true}

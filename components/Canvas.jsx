@@ -6,9 +6,11 @@ import Cube from "../components/Cube";
 import Interface from "../components/Interface";
 import { useState } from "react";
 import ScrollManager from "../components/ScrollManager";
+import Menu from "../components/Menu";
 
 export default function Canvas_Com() {
   const [section, setSection] = useState(0);
+  const [menuOpened, setMenuOpened] = useState(false);
 
   return (
     <>
@@ -24,6 +26,11 @@ export default function Canvas_Com() {
           </Scroll>
         </ScrollControls>
       </Canvas>
+      <Menu
+        onSectionChange={setSection}
+        MenuOpened={menuOpened}
+        setMenuOpened={setMenuOpened}
+      />
     </>
   );
 }
